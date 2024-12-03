@@ -1,0 +1,333 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply box-border m-0 p-0 select-none;
+    }
+
+    body,
+    html {
+        @apply h-full;
+    }
+
+    html,
+    input,
+    button {
+        font:
+            14px/1.5 -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            Ubuntu,
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
+    }
+
+    textarea {
+        @apply select-text;
+    }
+
+    button {
+        @apply px-4 py-[0.3rem] bg-gray-300 border-0 transition-colors duration-200;
+    }
+
+    button:hover,
+    button:focus {
+        @apply bg-gray-400 transition-none outline-none;
+    }
+
+    button:active {
+        @apply bg-gray-500;
+    }
+
+    a,
+    img {
+        -webkit-user-drag: none;
+        user-drag: none;
+    }
+}
+
+@layer components {
+    /* .hide {
+        @apply opacity-0 pointer-events-none;
+    } */
+
+    /* Grid styles */
+    #grid {
+        @apply absolute left-0 top-0 w-full h-full overflow-hidden;
+    }
+
+    #grid ol {
+        @apply grid relative list-none list-inside;
+    }
+
+    #grid.arrow ol {
+        @apply cursor-crosshair;
+    }
+
+    #grid.pan ol {
+        @apply cursor-grab;
+    }
+
+    #grid.pan:active ol {
+        @apply cursor-grabbing;
+    }
+
+    #grid ul {
+        @apply absolute list-none list-inside left-0 top-0 h-0 w-0;
+    }
+
+    /* Grid Cell styles */
+    .grid-cell {
+        @apply relative grid border-dashed border-2 border-gray-300 border-t-0 border-l-0 overflow-hidden whitespace-nowrap transition-all duration-200;
+    }
+
+    .grid-cell.moving {
+        @apply bg-white shadow-[0_5px_10px_rgba(0,0,0,0.3)] scale-110;
+    }
+
+    .grid-cell.selected {
+        @apply outline-none bg-gray-100;
+    }
+
+    .grid-cell .grabber {
+        @apply absolute left-0.5 top-0.5 w-3 h-3 cursor-move opacity-0 pointer-events-none;
+    }
+
+    .grid-cell .loop {
+        @apply absolute right-0.5 top-0.5 w-6 h-6 cursor-pointer opacity-0 pointer-events-none;
+    }
+
+    .pan .grid-cell:hover .grabber,
+    .arrow .grid-cell:hover .loop {
+        @apply opacity-100 pointer-events-auto;
+    }
+
+    .grid-cell .value {
+        @apply m-auto;
+    }
+
+    .grid-cell.edit .value {
+        @apply opacity-0 pointer-events-none;
+    }
+
+    .grid-cell .edit {
+        @apply flex items-center absolute w-full h-full;
+    }
+
+    .grid-cell .edit input {
+        @apply border-none outline-none w-full text-center bg-transparent font-mono text-base;
+    }
+
+    /* Grid Arrow styles */
+    .grid-arrow {
+        @apply absolute pointer-events-none;
+    }
+
+    .grid-arrow svg {
+        @apply block;
+    }
+
+    .grid-arrow svg .mouse {
+        @apply transition duration-100;
+    }
+
+    /* 矢印上でのホバー効果 */
+    .arrow .grid-arrow:not(.phantom) svg .mouse {
+        @apply pointer-events-auto;
+    }
+
+    .arrow .grid-arrow svg .mouse:hover {
+        @apply stroke-cyan-100;
+    }
+
+    /* 選択中の矢印のスタイル */
+    .grid-arrow.selected svg .mouse.mouse {
+        @apply stroke-gray-300;
+    }
+
+    .grid-arrow .value {
+        @apply absolute whitespace-nowrap;
+    }
+
+    .grid-arrow .value.inside {
+        @apply px-[5px] py-0 bg-white;
+    }
+
+    /* Toolbox styles */
+    .toolbox {
+        @apply absolute left-1/3 -translate-x-1/4 px-2 py-0 bg-gray-200 shadow-[0_5px_10px_rgba(0,0,0,0.5)];
+    }
+
+    .toolbox ul {
+        @apply leading-zero flex flex-wrap items-stretch list-none list-inside;
+    }
+
+    .toolbox li.separator {
+        @apply my-0 mx-2 w-0.5 bg-white/40 -indent-[9999em];
+    }
+
+    .toolbox li.button a {
+        @apply cursor-default transition-colors duration-200;
+    }
+
+    .toolbox li.button a:hover,
+    .toolbox li.button a:focus {
+        @apply bg-gray-300 transition-none;
+    }
+
+    .toolbox li.button a:active {
+        @apply bg-gray-400;
+    }
+
+    .toolbox li.button.checked a {
+        @apply bg-gray-400;
+    }
+
+    .toolbox li.button.disabled a {
+        @apply opacity-40 pointer-events-none;
+    }
+
+    .toolbox li.button a {
+        @apply block p-2;
+    }
+
+    .toolbox li.button img {
+        @apply block bg-[length:100%] bg-center w-6 h-6 transition-[background-image] duration-200;
+    }
+
+    #toolbox {
+        @apply bottom-8;
+    }
+
+    /* Properties styles */
+    #properties {
+        @apply absolute top-0 left-0 right-0 bottom-0 pointer-events-none;
+    }
+
+    #properties.edit {
+        @apply pointer-events-auto;
+    }
+
+    #properties .edit {
+        @apply rounded-[5px] absolute w-[130px] px-[1em] py-[0.3em] bg-neutral-700/90 shadow-[0_5px_10px_rgba(0,0,0,0.5)] 
+               opacity-0 scale-[0.7] translate-x-0 translate-y-full transition-[opacity,transform] duration-100;
+    }
+
+    #properties .edit::after {
+        @apply content-[''] block absolute left-[calc(50%-10px)] bottom-[-10px]
+              border-r-[10px] border-r-transparent 
+              border-l-[10px] border-l-transparent 
+              border-t-[10px] border-t-gray-600/90;
+    }
+
+    #properties.edit .edit {
+        @apply opacity-100 scale-100;
+    }
+
+    #properties .edit input {
+        @apply w-full border-none outline-none bg-transparent text-white font-mono text-base text-center;
+    }
+
+    #properties .toolbox {
+        @apply top-[calc(-16px-2em)] bg-black/70 transition-[top] duration-200 pointer-events-auto;
+    }
+
+    #properties.show .toolbox {
+        @apply top-4;
+    }
+
+    #properties li.button img {
+        @apply w-4 h-4 invert min-w-4 min-h-4;
+    }
+
+    #properties li.button a:hover,
+    #properties li.button a:focus {
+        @apply bg-[#0050c0];
+    }
+
+    #properties li.button a:active {
+        @apply bg-[#0030a0];
+    }
+
+    #properties li.button.checked a {
+        @apply bg-[#2272e2];
+    }
+
+    #properties li.button.remove a:hover,
+    #properties li.button.remove a:focus {
+        @apply bg-[#e81123];
+    }
+
+    #properties li.button.remove a:active {
+        @apply bg-[#c60001];
+    }
+
+    #properties li.separator {
+        @apply bg-white/40;
+    }
+
+    #properties .show .toolbox li.button {
+        @apply pointer-events-auto;
+    }
+
+    /* Modal styles */
+    #modal-overlay {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0);
+        visibility: hidden;
+        transition: background-color 0.2s;
+    }
+    #modal-overlay.show {
+        visibility: visible;
+        background: rgba(255, 255, 255, 0.5);
+    }
+    #modal-overlay .modal-box {
+        background: rgba(221, 221, 221, 0.7);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        padding: 1rem;
+        opacity: 0;
+        transform: scale(0.9) translateY(5rem);
+        transition:
+            transform 0.2s,
+            opacity 0.2s;
+    }
+    #modal-overlay.show .modal-box {
+        opacity: 1;
+        transform: none;
+    }
+    /* Mouse interaction styles */
+    .code-box textarea {
+        @apply block p-2 border-none resize-none w-[62vw] h-[50vh] font-mono text-base bg-gray-300 text-white whitespace-pre;
+    }
+
+    .code-box textarea:focus {
+        @apply outline outline-2 outline-offset-2 outline-cyan-500;
+    }
+
+    .code-box .buttons {
+        @apply flex justify-end list-none mt-4;
+    }
+
+    .code-box .buttons li:not(:first-child) {
+        @apply ml-2;
+    }
+
+    .code-box .buttons li.separator {
+        @apply flex-1;
+    }
+    /* 矢印作成中は常にcrosshair
+    #grid.arrow_creating .grid-arrow:not(.phantom):hover {
+        @apply cursor-crosshair !important;
+    } */
+}

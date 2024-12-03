@@ -1,73 +1,56 @@
-# tikzcd-editor [![CI](https://github.com/yishn/tikzcd-editor/workflows/CI/badge.svg)](https://github.com/yishn/tikzcd-editor/actions)
+# tikzcd-editor-next
 
-A simple visual editor for creating commutative diagrams.
-
-You can
-[download the latest release](https://github.com/yishn/tikzcd-editor/releases)
-to host it on your own or [try it out here](https://tikzcd.yichuanshen.de/).
+A Next.js + TypeScript + Tailwind CSS port of
+[tikzcd-editor](https://github.com/yishn/tikzcd-editor) , a modern
+implementation of the commutative diagram editor originally created by @yishn.
 
 ![Screenshot](./screenshot.png)
 
-## Building
+## Installation
 
-Make sure you have [Node.js](https://nodejs.org/) and npm installed. First,
-clone this repository:
+Clone the repository:
 
-```
-$ git clone https://github.com/yishn/tikzcd-editor
-$ cd tikzcd-editor
-```
-
-Install dependencies with npm:
-
-```
-$ npm install
+```bash
+git clone https://github.com/chantakan/tikzcd-editor-nextjs.git
+cd tikzcd-editor-next
 ```
 
-You can build by using the `build` command:
+## Development
+
+To start the development server, run:
+
+```bash
+npm run dev
 
 ```
-$ npm run build
+
+## Build
+
+To build the project, run:
+
+```bash
+npm run build
 ```
 
-This will create a minified bundle `bundle.js` and its source map. To launch,
-simply open `index.html` in your favorite modern browser.
+## Using DevContainer
 
-Use the `watch` command for development:
+To use DevContainer, follow these steps:
 
-```
-$ npm run watch
-```
-
-To create a self-contained archive file ready for distribution, run the
-following command:
-
-```
-$ npm run dist
-```
-
-This will create a folder and a `zip` file in the `dist` folder.
+- Open the project in Visual Studio Code.
+- Install the "Remote - Containers" extension.
+- Reopen the project in the container by clicking on the green button in the
+  bottom-left corner and selecting "Reopen in Container".
 
 ## Contributing
 
-Bug reports and pull requests are always welcome! Please consult the
-[issues list](https://github.com/yishn/tikzcd-editor/issues) for existing issues
-beforehand.
+Bug reports and pull requests are welcome! Please consult the
+[issues list]("https://github.com/chantakan/tikzcd-editor-nextjs/issues) for
+existing issues beforehand.
 
-You can also support this project by [donating](https://paypal.me/yishn/4).
+License This project is licensed under the MIT License. See the
+[LICENSE](./LICENSE) file for details.
 
-## Donators
+## Additional Information
 
-A big thanks to these lovely people:
-
-- Jeremy Rouse
-- Marko Rodriguez
-- Steve Heim
-- Max New
-- Bingyu Zhang
-- Ariella Lee
-
-## Related
-
-- [jsx-tikzcd](https://github.com/yishn/jsx-tikzcd) - Render tikzcd diagrams
-  with JSX.
+For more details, refer to the
+[original tikzcd-editor](https://github.com/yishn/tikzcd-editor) repository.

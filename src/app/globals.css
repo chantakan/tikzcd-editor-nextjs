@@ -48,6 +48,29 @@
         -webkit-user-drag: none;
         user-drag: none;
     }
+
+    /* スクリーンリーダー用のテキスト */
+    .sr-only {
+        @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+        clip: rect(0, 0, 0, 0);
+        clip-path: inset(50%);
+    }
+
+    /* フォーカス可能な要素のアウトライン */
+    :focus-visible {
+        @apply outline-2 outline-offset-2 outline-blue-500;
+    }
+
+    /* ハイコントラストモード対応 */
+    @media (forced-colors: active) {
+        .grid-cell {
+            @apply border-[ButtonText];
+        }
+
+        .grid-arrow svg path {
+            @apply stroke-[ButtonText];
+        }
+    }
 }
 
 @layer components {

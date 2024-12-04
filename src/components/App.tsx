@@ -471,7 +471,7 @@ const App = () => {
                     icon="./img/tools/about.svg"
                     name="GitHub Repository"
                     onClick={() => {
-                        window.open('https://github.com/yishn/tikzcd-editor', '_blank')
+                        window.open('https://github.com/chantakan/tikzcd-editor-nextjs', '_blank')
                     }}
                 />
             </Toolbox>

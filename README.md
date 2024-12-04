@@ -6,6 +6,10 @@ implementation of the commutative diagram editor originally created by @yishn.
 
 ![Screenshot](./screenshot.png)
 
+## Demo
+
+Try the live demo at [tikzcd-editor-next.tompython.com](https://tikzcd-editor-next.tompython.com)
+
 ## Installation
 
 Clone the repository:
@@ -47,7 +51,11 @@ Bug reports and pull requests are welcome! Please consult the
 [issues list]("https://github.com/chantakan/tikzcd-editor-nextjs/issues) for
 existing issues beforehand.
 
-License This project is licensed under the MIT License. See the
+If you find this project helpful, consider [supporting its development](https://www.paypal.com/paypalme/tompython/500).
+
+## License 
+
+This project is licensed under the MIT License. See the
 [LICENSE](./LICENSE) file for details.
 
 ## Additional Information
